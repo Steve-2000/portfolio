@@ -6,10 +6,10 @@ const databasecon=require("./connectMongo/connectdb")
 dotenv.config({path:path.join(__dirname,"./config.env")})
 databasecon()
 
-const PORT=process.env.PORT || 8000;
+const PORT=process.env.PORT || 5000;
 
-const server=app.listen(PORT,()=>{
-    console.log(`server connected successfully and run port ${PORT}`)
+const server=app.listen(PORT, '0.0.0.0', ()=>{
+    console.log(`Server running on port ${PORT}`)
 })
 process.on('unhandledRejection', (err) => {
     console.log(`Error: ${err.message}`);
