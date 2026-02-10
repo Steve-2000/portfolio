@@ -4,7 +4,7 @@ import { projectsRequest, projectsSuccess, projectfailure } from "../slices/proj
 export const getprojects = () => async (dispatch) => {
     dispatch(projectsRequest());
     try{
-        const {data} = await axios.get("http://localhost:5000/api/project/projectDetail");
+        const {data} = await axios.get("/api/project/projectDetail");
         dispatch(projectsSuccess(data));
     }catch(error){
         const err = error.response && error.response.data ? error.response.data.message : error.message;
