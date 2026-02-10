@@ -10,6 +10,7 @@ const Home = () => {
      
     useEffect(() => {
         console.log('Projects loaded:', projects);
+        console.log('Is array?', Array.isArray(projects));
     }, [projects])
 
   return (
@@ -19,7 +20,7 @@ const Home = () => {
         <h1 className='text-black-500 text-4xl font-bold text-center'>Featured Projects</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 p-2 mx-2 ms-4 items-center justify-center text-left px-2 mr-2">
       {loading && <p className='col-span-full text-xl font-medium text-red-300 animate-bounce text-center'>Loading projects...</p>}
-      {!loading && projects?.length > 0 ? projects.map((item) => (
+      {!loading && Array.isArray(projects) && projects.length > 0 ? projects.map((item) => (
                 <div key={item._id} className="bg-white text-black p-3 rounded">
                       <img src={item.Image[0]?.image || item.Image[1]?.image || item.Image[2]?.image} alt={item.title} className="w-full h-50 object-cover rounded-2xl hover:scale-105 transition-transform duration-300" /> 
       

@@ -14,7 +14,11 @@ const projectslices=createSlice({
         },
         projectsSuccess(state,action){
             state.loading=false;
-            state.projects=action.payload.data || action.payload;
+            state.projects=Array.isArray(action.payload) 
+                ? action.payload 
+                : (action.payload.data && Array.isArray(action.payload.data)) 
+                ? action.payload.data 
+                : [];
             state.error=null;
 
 
